@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Login from '@/components/Login.vue'
 import FormulariCategoria from '@/components/FormularioCategoria.vue'
+import FormulariScp from '@/components/FormularioSpc.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
     path: '/categoria',
     name: 'categoria',
     component: FormulariCategoria
+  },
+  {
+    path: '/scp',
+    name: 'scp',
+    component: FormulariScp
   },
   {
     path: '/about',
