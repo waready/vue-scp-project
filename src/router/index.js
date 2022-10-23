@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Login from '@/components/Login.vue'
+import FormulariCategoria from '@/components/FormularioCategoria.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,6 +15,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/categoria',
+    name: 'categoria',
+    component: FormulariCategoria
   },
   {
     path: '/about',

@@ -6,25 +6,25 @@
                 <v-flex xs12 sm8 md4>
                    <v-card class="elevation-12">
                       <v-toolbar dark color="primary">
-                         <v-toolbar-title>Login form</v-toolbar-title>
+                         <v-toolbar-title>Categoria form</v-toolbar-title>
                       </v-toolbar>
                       <v-card-text>
                          <v-form>
                             <v-text-field
-                               prepend-icon="person"
-                               name="login"
-                               label="Login"
-                               v-model="email"
+                               prepend-icon="categoria"
+                               name="categoria"
+                               label="categoria"
+                               v-model="name"
                                type="text"
                             ></v-text-field>
-                            <v-text-field
-                               id="password"
-                               prepend-icon="lock"
-                               name="password"
-                               label="Password"
-                               v-model="password"
-                               type="password"
-                            ></v-text-field>
+                            <v-select
+                            v-model="danger"
+                            :items="['one','two','three']"
+                        
+                            label="Peligro"
+                            required
+                            ></v-select>
+                            
                          </v-form>
                       </v-card-text>
                       <v-card-actions>
@@ -42,25 +42,28 @@
  <script>
 import axios from "axios";
  export default {
-    name: 'Login',
-    props: {
-      source: String,
-   },
+    name: 'categoria',
    data() {
       return {
-         email:"",
-         password:""         
+        name:"",
+        danger:""         
       }
    },
    methods:{
       enviarAuth(){
-         const user = {
-            email: this.email,
-            password:this.password
+         const categoria = {
+            name: this.name,
+            danger:this.danger
          }
-         axios.post('login', {user})
+         axios.post('categorias', {categoria},
+        {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                'Authorization': `Bearer ${window.localStorage.getItem('_tokenOne')}` 
+            } 
+        })
          .then(function (response) {
-            window.localStorage.setItem('_tokenOne', response.data.token);
+            //window.localStorage.setItem('_tokenOne', response.data.token);
             console.log(response);
          })
          .catch(function (error) {
