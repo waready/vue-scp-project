@@ -41,6 +41,7 @@
  
  <script>
 import axios from "axios";
+import router from '@/router'
  export default {
     name: 'Login',
     props: {
@@ -61,7 +62,7 @@ import axios from "axios";
          axios.post('login', {user})
          .then(function (response) {
             window.localStorage.setItem('_tokenOne', response.data.token);
-            console.log(response);
+            router.push('/categoria');
          })
          .catch(function (error) {
             console.log(error);
