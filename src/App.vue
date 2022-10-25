@@ -36,6 +36,11 @@
         <span class="mr-2">Latest Release</span>
         <v-icon>open_in_new</v-icon>
       </v-btn>
+      <v-btn
+        @click="login()"
+      >
+      <span class="mr-2">Login</span>
+      </v-btn>
     </v-app-bar>
 
     <v-main>
@@ -45,12 +50,20 @@
 </template>
 
 <script>
-
+import router from './router';
 export default {
   name: 'App',
 
   data: () => ({
     //
   }),
+  methods:{
+    login(){
+      let token = window.localStorage.getItem('_tokenOne')
+        if(!token){
+          router.push("/login")
+        }
+    }
+  }
 };
 </script>

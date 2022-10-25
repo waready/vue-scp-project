@@ -84,10 +84,6 @@ import axios from "axios";
     });
     },
    methods:{
-    uploadFile (event) {
-        this.FILE = this.$refs.elFile.files[0];
-        console.log(this.$refs.elFile.files[0])
-      },
       enviarAuth(){
         
          const formData = new FormData();

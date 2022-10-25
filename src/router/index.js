@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import Login from '@/components/Login.vue'
 import FormulariCategoria from '@/components/FormularioCategoria.vue'
 import FormulariScp from '@/components/FormularioSpc.vue'
+import ListScp from '@/components/ListScp.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,12 +24,17 @@ const routes = [
     component: FormulariCategoria
   },
   {
+    path: '/allscp',
+    name: 'allscp',
+    component: ListScp
+  },
+  {
     path: '/scp',
     name: 'scp',
     component: FormulariScp
   },
   {
-    path: '/about',
+    path: '*',
     name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

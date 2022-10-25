@@ -1,6 +1,6 @@
 <template>
     <v-app id="inspire">
-       <v-content>
+       <v-main>
           <v-container fluid fill-height>
              <v-layout align-center justify-center>
                 <v-flex xs12 sm8 md4>
@@ -35,14 +35,14 @@
                 </v-flex>
              </v-layout>
           </v-container>
-       </v-content>
+       </v-main>
     </v-app>
  </template>
  
  <script>
 import axios from "axios";
 import router from '@/router'
- export default {
+export default {
     name: 'Login',
     props: {
       source: String,
@@ -62,7 +62,7 @@ import router from '@/router'
          axios.post('login', {user})
          .then(function (response) {
             window.localStorage.setItem('_tokenOne', response.data.token);
-            router.push('/categoria');
+            router.push('/allscp');
          })
          .catch(function (error) {
             console.log(error);
