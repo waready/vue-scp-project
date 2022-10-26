@@ -6,7 +6,8 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import axios from "axios";
 
-axios.defaults.baseURL="http://127.0.0.1:3333/api/v1/"
+// axios.defaults.baseURL="http://127.0.0.1:3333/api/v1/"
+axios.defaults.baseURL="https://project-scp-adonis.herokuapp.com/api/v1/"
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
 

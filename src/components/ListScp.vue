@@ -9,8 +9,6 @@
                 >
                 <v-tab active>Listado</v-tab>
                 <v-tab @click="CrearScp()">Crear</v-tab>
-                <v-tab>Editar</v-tab>
-                <v-tab>Eliminar</v-tab>
                 </v-tabs>
             </v-card>
             <v-row>
@@ -31,7 +29,7 @@
 
                     <v-img
                     height="250"
-                    :src="'http://localhost:3333/uploads/'+item.url_img"
+                    :src="'https://project-scp-adonis.herokuapp.com/uploads/'+item.url_img"
                     ></v-img>
 
                     <v-card-title>{{item.name}}</v-card-title>
@@ -62,6 +60,13 @@
                         
                     >
                         Editar
+                    </v-btn>
+                    <v-btn
+                        color="red lighten-2"
+                        text
+                        
+                    >
+                        Eliminar
                     </v-btn>
                     </v-card-actions>
                 </v-card>

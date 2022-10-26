@@ -1,12 +1,29 @@
 <template>
-    <v-app id="inspire">        
+    <v-app>
+      <v-container> 
+      <v-row>
+         <v-col>
+            <v-card>
+                <v-tabs
+                background-color="deep-purple accent-4"
+                center-active
+                dark
+                >
+                <v-tab to="/allscp">Listado</v-tab>
+                <v-tab @click="CrearScp()" active>Crear</v-tab>
+                </v-tabs>
+            </v-card>
+         </v-col>
+      </v-row>
+   </v-container>       
        <v-main>
           <v-container fluid fill-height>
+   
              <v-layout align-center justify-center>
                 <v-flex xs12 sm8 md4>
                    <v-card class="elevation-12">
                       <v-toolbar dark color="primary">
-                         <v-toolbar-title>Categoria form</v-toolbar-title>
+                         <v-toolbar-title>SCP Register</v-toolbar-title>
                       </v-toolbar>
                       <v-card-text>
                          <v-form>
@@ -20,26 +37,23 @@
                             >
                             </v-file-input>
                             <v-text-field
-                               prepend-icon="scp-name"
                                name="scp-name"
                                label="scp-name"
                                v-model="name"
                                type="text"
                             ></v-text-field>
                             <v-text-field
-                               prepend-icon="scp-item"
                                name="scp-item"
                                label="scp-item"
                                v-model="item"
                                type="text"
                             ></v-text-field>
-                            <v-text-field
-                               prepend-icon="descripcion"
-                               name="descripcion"
-                               label="descripcion"
-                               v-model="descrition"
-                               type="text"
-                            ></v-text-field>
+                            <v-textarea
+                              name="input-7-1"
+                              label="Descripción"
+                              auto-grow
+                              v-model="descrition"
+                           ></v-textarea>
                             <v-select
                             v-model="category_id"
                             :items="mensaje"
@@ -51,7 +65,7 @@
                       </v-card-text>
                       <v-card-actions>
                          <v-spacer></v-spacer>
-                         <v-btn @click="enviarAuth()"  color="primary" >Login</v-btn>
+                         <v-btn @click="enviarAuth()"  color="primary" >Registrar Scp</v-btn>
                       </v-card-actions>
                    </v-card>
                 </v-flex>
@@ -63,6 +77,7 @@
  
  <script>
 import axios from "axios";
+import router from "@/router";
  export default {
     name: 'scp',
  
@@ -103,6 +118,7 @@ import axios from "axios";
          .then(function (response) {
             //window.localStorage.setItem('_tokenOne', response.data.token);
             console.log(response);
+            router.push("/allscp")
          })
          .catch(function (error) {
             console.log(error);
