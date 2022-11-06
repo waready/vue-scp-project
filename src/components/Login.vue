@@ -42,6 +42,7 @@
  <script>
 import axios from "axios";
 import router from '@/router'
+import store from '@/store'
 export default {
     name: 'Login',
     props: {
@@ -60,8 +61,9 @@ export default {
             password:this.password
          }
          axios.post('login', {user})
-         .then(function (response) {
+         .then( (response) => {
             window.localStorage.setItem('_tokenOne', response.data.token);
+            store.user = this.email
             router.push('/allscp');
          })
          .catch(function (error) {
