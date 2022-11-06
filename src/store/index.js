@@ -5,6 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    user: null,
+    role: 'guest',
+    logged: false
   },
   getters: {
   },

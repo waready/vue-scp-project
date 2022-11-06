@@ -112,7 +112,7 @@ import router from "@/router";
             headers: {
                 "Access-Control-Allow-Origin": "*",
                 'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${window.localStorage.getItem('_tokenOne')}` 
+                //'Authorization': `Bearer ${window.localStorage.getItem('_tokenOne')}` 
             } 
         })
          .then(function (response) {

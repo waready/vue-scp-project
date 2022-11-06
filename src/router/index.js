@@ -7,6 +7,8 @@ import FormulariScp from '@/components/FormularioSpc.vue'
 import ListScp from '@/components/ListScp.vue'
 Vue.use(VueRouter)
 
+import store from '@/store';
+
 const routes = [
   {
     path: '/',
@@ -48,5 +50,20 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  if (to.meta.Auth && !store.state.authModule.logged && store.state.loaded) {
+    next({path: '/login'});
+  } else {
+    if (to.meta.role) {
+      if (store.state.loaded && (to.meta.role !== store.state.authModule.role)) {
+        next({path: '/'});
+        return;
+      }
+    }
+    next();
+  }
+});
 
 export default router
