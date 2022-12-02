@@ -36,7 +36,25 @@
         <span class="mr-2">Latest Release</span>
         <v-icon>open_in_new</v-icon>
       </v-btn>
-      <v-btn
+      <v-menu offset-y class="mr-2" v-if="$store.state.user">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="primary"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+            {{ $store.state.user }}
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item>
+            <v-list-item-title @click="salir()">Salir</v-list-item-title>
+          </v-list-item>
+        </v-list>
+    </v-menu>
+
+      <v-btn v-else 
         @click="login()"
       >
       <span class="mr-2">Login</span>
@@ -50,6 +68,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import router from './router';
 export default {
   name: 'App',
@@ -58,11 +77,18 @@ export default {
     //
   }),
   methods:{
+    ...mapActions(['logout']),
     login(){
       let token = window.localStorage.getItem('_tokenOne')
         if(!token){
           router.push("/login")
         }
+    },
+    salir(){
+      this.logout();
+      localStorage.clear();
+      sessionStorage.clear();
+      router.push("/login")
     }
   }
 };

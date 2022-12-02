@@ -42,7 +42,7 @@
  <script>
 import axios from "axios";
 import router from '@/router'
-import store from '@/store'
+import { mapActions } from "vuex";
 export default {
     name: 'Login',
     props: {
@@ -55,6 +55,7 @@ export default {
       }
    },
    methods:{
+      ...mapActions(['loginUser']),
       enviarAuth(){
          const user = {
             email: this.email,
@@ -63,7 +64,7 @@ export default {
          axios.post('login', {user})
          .then( (response) => {
             window.localStorage.setItem('_tokenOne', response.data.token);
-            store.user = this.email
+            this.loginUser(user.email)   
             router.push('/allscp');
          })
          .catch(function (error) {

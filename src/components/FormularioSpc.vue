@@ -10,7 +10,7 @@
                 dark
                 >
                 <v-tab to="/allscp">Listado</v-tab>
-                <v-tab @click="CrearScp()" active>Crear</v-tab>
+                <v-tab  active>Crear</v-tab>
                 </v-tabs>
             </v-card>
          </v-col>
@@ -95,7 +95,7 @@ import router from "@/router";
     axios.get('categorias')
     .then((respuesta) => { 
         console.log(respuesta);
-        this.mensaje = respuesta.data.map(option => ({value: option.id, text: option.name}));;
+        this.mensaje = respuesta.data.map(option => ({value: option.id, text: option.name}));
     });
     },
    methods:{
